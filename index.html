@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="snake.js"></script>
+    <script src="food.js"></script>
+
+</head>
+<body>
+<canvas height="768" id="myCanvas" style="border: solid 1px" width="1368"></canvas>
+<script>
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext('2d');
+    let mySnake = new Snake(50, 50, 100, 100, 30, 'img/snake3.png');
+
+    let food = new Food(Math.random()*1368,Math.random()*768, 70, 70, 'img/shit.png' );
+
+
+    mySnake.drawSnake(ctx);
+
+    food.drawFood(ctx);
+
+
+    function moveCar(event) {
+        switch (event.keyCode) {
+            case 37: {
+                mySnake.moveLeft();
+                mySnake.src = 'img/snake1.png';
+                break;
+            }
+            case 39: {
+                mySnake.moveRight();
+                mySnake.src = 'img/snake3.png';
+                break
+            }
+            case 38: {
+                mySnake.moveUp();
+                mySnake.src = 'img/snake2.png';
+                break;
+            }
+            case 40: {
+                mySnake.moveDown();
+                mySnake.src = 'img/snake4.png';
+                break;
+            }
+            case 32: {
+                mySnake.upSpeed();
+                break;
+            }
+        }
+        updateCanvas();
+    }
+
+    function clearCanvas() {
+        ctx.clearRect(0, 0, 1368, 768);
+    }
+
+    function updateCanvas() {
+        clearCanvas();
+        food.drawFood(ctx);
+        mySnake.drawSnake(ctx);
+    }
+
+    document.addEventListener('keydown', moveCar);
+</script>
+</body>
+</html>
