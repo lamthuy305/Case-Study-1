@@ -22,7 +22,7 @@
     food.drawFood(ctx);
 
 
-    function moveCar(event) {
+    function moveSnake(event) {
         switch (event.keyCode) {
             case 37: {
                 mySnake.moveLeft();
@@ -62,7 +62,7 @@
         mySnake.drawSnake(ctx);
     }
 
-    document.addEventListener('keydown', moveCar);
+    document.addEventListener('keydown', moveSnake);
 </script>
 </body>
 </html>
